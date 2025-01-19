@@ -139,7 +139,7 @@ section .title::after {
 
 /*  Nav Logo Span Linear-Gradient  */
 .navbar .logo a span {
-  background: linear-gradient(135deg, #041d3d, grey, crimson);
+  background: linear-gradient(135deg, #041d3d, rgb(139, 135, 135), crimson);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -250,7 +250,7 @@ section .title::after {
 /* Linear Gradient */
 .home .home-content .text-3 span {
   color: #1e3551;
-  background: linear-gradient(135deg, #041d3d, grey, crimson);
+  background: linear-gradient(135deg, #041d3d, rgb(139, 135, 135), crimson);
   -webkit-background-clip: text;
   background-clip: var();
   -webkit-text-fill-color: transparent;
@@ -285,6 +285,7 @@ section .title::after {
   text-overflow: ellipsis;
   display: -webkit-inline-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
@@ -312,8 +313,9 @@ section .title::after {
 /* Linear Gradiant */
 .about .about-content .right .text span {
   /* color: #1e3551; */
-  background: linear-gradient(135deg, #041d3d, grey, crimson);
+  background: linear-gradient(135deg, #041d3d, rgb(139, 135, 135), crimson);
   -webkit-background-clip: text;
+  background-clip: var();
   -webkit-text-fill-color: transparent;
 }
 
@@ -383,8 +385,9 @@ section .title::after {
 .services .serv-content .card i {
   font-size: 50px;
   color: #888e8d;
-  background: linear-gradient(135deg, #041d3d, grey, crimson);
+  background: linear-gradient(135deg, #041d3d, rgb(139, 135, 135), crimson);
   -webkit-background-clip: text;
+  background-clip: var();
   -webkit-text-fill-color: transparent;
   transition: color 0.3s ease;
 }
