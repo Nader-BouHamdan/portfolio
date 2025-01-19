@@ -141,6 +141,7 @@ section .title::after {
 .navbar .logo a span {
   background: linear-gradient(135deg, #041d3d, grey, crimson);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.3s ease;
 }
@@ -251,6 +252,7 @@ section .title::after {
   color: #1e3551;
   background: linear-gradient(135deg, #041d3d, grey, crimson);
   -webkit-background-clip: text;
+  background-clip: var();
   -webkit-text-fill-color: transparent;
   font-weight: 500;
 }
