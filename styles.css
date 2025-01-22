@@ -213,8 +213,8 @@ section .title::after {
 /*  Home  */
 .home {
   display: flex;
-  background: url("https://images.unsplash.com/photo-1516721306533-364eee523197") no-repeat
-    center;
+  background: url("https://images.unsplash.com/photo-1516721306533-364eee523197")
+    no-repeat center;
   height: 100vh;
   color: #fff;
   min-height: 500px;
@@ -368,6 +368,7 @@ section .title::after {
   padding: 50px 25px;
   cursor: pointer;
   transition: all 0.3s ease;
+  padding-top: 4%;
 }
 
 .services .serv-content .card:hover {
@@ -400,9 +401,15 @@ section .title::after {
   font-size: 25px;
   font-weight: 500;
   margin: 10px 0 7px 0;
-  padding-bottom: 0%;
+  padding-bottom: 5%;
 }
 
+omg {
+  color: rgb(104, 3, 246);
+  font-size: large;
+  padding-top: 2%;
+  font: bolder;
+}
 
 /*  Skills  */
 .skills {
