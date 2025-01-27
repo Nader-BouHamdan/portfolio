@@ -38,27 +38,27 @@ $(document).ready(function () {
 
   //  Typing Text Animation  //
 
-  var typed = new Typed(".typing", {
-    strings: [
-      "Mechatronics Engineer",
-      "Software Developer",
-      "Entrepeneur"
-    ],
-    typeSpeed: 100,
-    backSpeed: 60,
-    loop: true
-  });
+  // var typed = new Typed(".typing", {
+  //   strings: [
+  //     "Mechatronics Engineer",
+  //     "Software Developer",
+  //     "Entrepeneur"
+  //   ],
+  //   typeSpeed: 100,
+  //   backSpeed: 60,
+  //   loop: true
+  // });
 
-  var typed = new Typed(".typing-2", {
-    strings: [
-      "Mechatronics Engineer",
-      "Software Developer",
-      "Entrepeneur"
-    ],
-    typeSpeed: 100,
-    backSpeed: 60,
-    loop: true
-  });
+  // var typed = new Typed(".typing-2", {
+  //   strings: [
+  //     "Mechatronics Engineer",
+  //     "Software Developer",
+  //     "Entrepeneur"
+  //   ],
+  //   typeSpeed: 100,
+  //   backSpeed: 60,
+  //   loop: true
+  // });
 
   //  Owl Carousel  //
 
