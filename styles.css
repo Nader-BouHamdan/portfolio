@@ -250,7 +250,7 @@ section .title::after {
 /* Linear Gradient */
 .home .home-content .text-3 span {
   color: #1e3551;
-  background: linear-gradient(135deg, #041d3d, rgb(139, 135, 135), crimson);
+  /* background: linear-gradient(135deg, #041d3d, rgb(139, 135, 135), crimson); */
   -webkit-background-clip: text;
   background-clip: var();
   -webkit-text-fill-color: transparent;
