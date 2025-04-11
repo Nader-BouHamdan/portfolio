@@ -16,21 +16,18 @@ $(document).ready(function () {
   });
 
   //  slide-up script  //
-
   $(".scroll-up-btn").click(function () {
-    $("html").animate({ scrollTop: 0 });
-    //  removing smooth scroll on slide-up button click  //
-    $("html").css("scrollBehavior", "auto");
+    $("html, body").animate({ scrollTop: 0 }, "smooth");
   });
 
   $(".navbar .menu li a").click(function () {
     //  Smooth scroll on Menu Items click  //
-
-    $("html").css("scrollBehavior", "smooth");
+    $("html, body").animate({
+      scrollTop: $($(this).attr("href")).offset().top
+    }, "smooth");
   });
 
   //  Toggle Navbar  //
-
   $(".menu-btn").click(function () {
     $(".navbar .menu").toggleClass("active");
     $(".menu-btn i").toggleClass("active");
@@ -61,12 +58,11 @@ $(document).ready(function () {
   // });
 
   //  Owl Carousel  //
-
   $(".carousel").owlCarousel({
     margin: 20,
     loop: true,
     autoplay: true,
-    autoplayTimeOut: 2000,
+    autoplayTimeout: 2000,
     autoplayHoverPause: true,
     responsive: {
       0: {
