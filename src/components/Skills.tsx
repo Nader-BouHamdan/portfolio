@@ -81,9 +81,7 @@ export default function Skills() {
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-[var(--text)]">Development Skills</h3>
               <p className="text-[var(--text-light)]">
-                I'm familiar & work on a daily basis with Python, Linux, and ROS2.
-                My expertise spans across robotics, automation, and software development,
-                with a focus on creating efficient and innovative solutions.
+                I&apos;ve worked on various projects that showcase my technical abilities and problem-solving skills.
               </p>
             </div>
           </motion.div>

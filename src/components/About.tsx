@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import Image from 'next/image';
 
 export default function About() {
   const [ref, inView] = useInView({
@@ -35,9 +34,9 @@ export default function About() {
             className="space-y-6 text-center"
           >
             <div>
-              <h3 className="text-2xl font-semibold mb-4 text-[var(--text)]">I'm Nader Bou Hamdan</h3>
+              <h3 className="text-2xl font-semibold mb-4 text-[var(--text)]">I&apos;m Nader Bou Hamdan</h3>
               <p className="text-[var(--text-light)] mb-6">
-                I have graduated with a Bachelor's Degree in Mechatronics Engineering, and I am seeking an entry-level opportunity 
+                I have graduated with a Bachelor&apos;s Degree in Mechatronics Engineering, and I am seeking an entry-level opportunity 
                 with an esteemed organization where I can utilize my skills & enhance learning in the field of work for Intelligent 
                 Systems and Technologies.
               </p>
@@ -46,7 +45,7 @@ export default function About() {
             <div>
               <h3 className="text-xl font-semibold mb-4 text-[var(--text)]">Why Work With Me</h3>
               <p className="text-[var(--text-light)]">
-                I'm a driven Mechatronics Engineer looking to leverage my technical skills and cooperative spirit to successfully 
+                I&apos;m a driven Mechatronics Engineer looking to leverage my technical skills and cooperative spirit to successfully 
                 complete innovating projects. With expertise in robotics, automation, and software development, I bring a unique 
                 perspective to every challenge.
               </p>

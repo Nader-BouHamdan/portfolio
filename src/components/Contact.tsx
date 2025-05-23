@@ -18,21 +18,10 @@ export default function Contact() {
     email: '',
     message: '',
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', message: '' });
-    // Here you would typically handle the form submission to your backend
-  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -53,7 +42,7 @@ export default function Contact() {
         >
           <h2 className="heading-lg mb-4 text-gradient">Get in Touch</h2>
           <p className="text-[var(--text-light)]">
-            Have a question or want to work together? I'd love to hear from you.
+            I&apos;m always open to discussing new projects, creative ideas or opportunities to be part of your visions.
           </p>
         </motion.div>
 
@@ -231,12 +220,9 @@ export default function Contact() {
 
             <button
               type="submit"
-              disabled={isSubmitting}
-              className={`btn-primary w-full hover-lift ${
-                isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
-              }`}
+              className={`btn-primary w-full hover-lift`}
             >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
+              Send Message
             </button>
           </motion.form>
         </div>

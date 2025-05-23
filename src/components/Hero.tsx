@@ -19,7 +19,7 @@ export default function Hero() {
             className="text-center md:text-left"
           >
             <h1 className="heading-xl mb-6">
-              <span className="text-gradient">Hello, I'm Nader Bou Hamdan</span>
+              <span className="text-gradient">Hello, I&apos;m Nader Bou Hamdan</span>
             </h1>
             <p className="text-lg text-[var(--text)] mb-8 max-w-lg mx-auto md:mx-0">
               A Mechatronics Engineer passionate about building intelligent systems and technologies.
