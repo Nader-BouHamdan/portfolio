@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light theme variables */
+  --primary: #2563eb;
+  --primary-light: #60a5fa;
+  --primary-dark: #1d4ed8;
+  --background: #ffffff;
+  --background-alt: #f8fafc;
+  --text: #1e293b;
+  --text-light: #475569;
+  --accent: #f59e0b;
+  --accent-light: #fbbf24;
+  --accent-dark: #d97706;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --hover-bg: #f8fafc;
+}
+
+.dark {
+  /* Dark theme variables */
+  --primary: #3b82f6;
+  --primary-light: #60a5fa;
+  --primary-dark: #2563eb;
+  --background: #0f172a;
+  --background-alt: #1e293b;
+  --text: #f1f5f9;
+  --text-light: #cbd5e1;
+  --accent: #f59e0b;
+  --accent-light: #fbbf24;
+  --accent-dark: #d97706;
+  --card-bg: #1e293b;
+  --card-border: #334155;
+  --hover-bg: #334155;
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--background)] text-[var(--text)];
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-[var(--primary)] hover:bg-[var(--primary-dark)] 
+           text-white font-medium rounded-lg transition-colors duration-200 
+           shadow-sm hover:shadow-md;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+  
+  .heading-lg {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+  
+  .heading-md {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+
+  .card {
+    @apply bg-[var(--card-bg)] rounded-xl shadow-sm hover:shadow-md 
+           transition-all duration-200 border border-[var(--card-border)]
+           hover:border-[var(--primary-light)];
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-[var(--primary)] to-[var(--primary-light)] 
+           bg-clip-text text-transparent;
+  }
+
+  .section-alt {
+    @apply bg-gradient-to-br from-[var(--background-alt)] to-[var(--background)];
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-200 hover:-translate-y-1;
+  }
+
+  .theme-switch {
+    @apply p-2 rounded-lg bg-[var(--card-bg)] border border-[var(--card-border)]
+           hover:border-[var(--primary-light)] transition-colors duration-200;
+  }
+}
+
+/* Bright theme specific styles */
+.bright-theme {
+  --gradient-start: #f0f9ff;
+  --gradient-end: #ffffff;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --hover-bg: #f8fafc;
+}
+
+.bright-theme .section-alt {
+  @apply bg-gradient-to-br from-blue-50 to-white;
+}
+
+.bright-theme .card {
+  @apply bg-white border-slate-100 hover:border-blue-100;
+}
+
+.bright-theme .text-gradient {
+  @apply bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent;
+}
+
+.bright-theme .hover-lift {
+  @apply transition-transform duration-200 hover:-translate-y-1;
+}
