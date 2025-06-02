@@ -2,16 +2,12 @@
 const nextConfig = {
   images: {
     domains: ['naderbh.com', 'www.naderbh.com'],
-    unoptimized: true,
   },
-  async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        destination: '/:path*',
-      },
-    ]
-  },
+  // Vercel specific optimizations
+  swcMinify: true,
+  reactStrictMode: true,
+  poweredByHeader: false,
+  // Domain redirects
   async redirects() {
     return [
       {
@@ -29,4 +25,4 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+module.exports = nextConfig 
