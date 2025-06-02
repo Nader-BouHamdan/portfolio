@@ -2,12 +2,10 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: '/portfolio',
   images: {
     unoptimized: true,
   },
-  // Required for GitHub Pages
-  assetPrefix: '/portfolio/',
+  // Remove basePath and assetPrefix when using custom domain
   trailingSlash: true,
 }
 
