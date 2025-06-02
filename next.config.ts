@@ -1,9 +1,8 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  output: 'export',
   images: {
-    unoptimized: true,
+    unoptimized: false, // Vercel handles image optimization
   },
   // Remove basePath and assetPrefix when using custom domain
   trailingSlash: true,
