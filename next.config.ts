@@ -1,10 +1,14 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
   output: 'export',
   basePath: '/portfolio',
   images: {
     unoptimized: true,
   },
-};
+  // Required for GitHub Pages
+  assetPrefix: '/portfolio/',
+  trailingSlash: true,
+}
 
-export default nextConfig;
+export default nextConfig
