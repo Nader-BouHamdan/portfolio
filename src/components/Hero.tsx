@@ -84,9 +84,7 @@ export default function Hero() {
               <div className="text-3xl font-bold text-gradient mb-2">
                 {stat.number}
               </div>
-              <div className="text-[var(--text)]">
-                {stat.label}
-              </div>
+              <div className="text-[var(--text-light)]">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
