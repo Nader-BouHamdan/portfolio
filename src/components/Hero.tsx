@@ -71,10 +71,10 @@ export default function Hero() {
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
         >
           {[
-            { number: '6+', label: 'Years Experience' },
-            { number: '9+', label: 'Projects' },
+            // { number: '6+', label: 'Years Experience' },
+            { number: '10+', label: 'Projects' },
             { number: '40+', label: 'Students Taught' },
-            { number: '3+', label: 'Programming Languages' },
+            // { number: '3+', label: 'Programming Languages' },
           ].map((stat, index) => (
             <motion.div 
               key={index} 
