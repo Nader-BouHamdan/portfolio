@@ -1,4 +1,5 @@
 # DNS Configuration for naderbh.com
+# Copy these records to your domain registrar's DNS settings
 
 # A Records for apex domain (naderbh.com)
 naderbh.com.     A     76.76.21.21
@@ -6,8 +7,23 @@ naderbh.com.     A     76.76.21.21
 # CNAME Record for www subdomain
 www.naderbh.com.    CNAME    cname.vercel-dns.com.
 
-# TXT Record for domain verification
-naderbh.com.     TXT    "vercel-domain-verification=YOUR_VERIFICATION_CODE"
+# TXT Record for domain verification (get this from Vercel dashboard)
+# naderbh.com.     TXT    "vercel-domain-verification=YOUR_ACTUAL_CODE"
 
-# Note: Replace YOUR_VERIFICATION_CODE with the actual code from Vercel dashboard
-# The IP address 76.76.21.21 is Vercel's edge network IP 
+# Additional recommended records:
+# MX Record (if you need email)
+# naderbh.com.     MX     10    mail.naderbh.com.
+
+# SPF Record for email security
+naderbh.com.     TXT    "v=spf1 -all"
+
+# DMARC Record for email authentication
+naderbh.com.     TXT    "v=DMARC1; p=reject; rua=mailto:dmarc@naderbh.com"
+
+# Instructions:
+# 1. Go to your domain registrar's DNS settings
+# 2. Add the A record pointing to 76.76.21.21
+# 3. Add the CNAME record for www subdomain
+# 4. In Vercel dashboard, add your domain and get the verification TXT record
+# 5. Add the verification TXT record to your DNS
+# 6. Wait for DNS propagation (can take up to 48 hours) 

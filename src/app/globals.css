@@ -92,6 +92,21 @@
     @apply p-2 rounded-lg bg-[var(--card-bg)] border border-[var(--card-border)]
            hover:border-[var(--primary-light)] transition-colors duration-200;
   }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Bright theme specific styles */

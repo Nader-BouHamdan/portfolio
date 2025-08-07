@@ -7,21 +7,21 @@ const blogPosts = [
   {
     id: 1,
     title: 'Lebanese Tech Landscape',
-    image: '/assets/blog/lebanese-tech.jpg',
+    image: '/assets/Company.png',
     date: 'Aug. 30, 2024 - 8:27 p.m. (GMT+3)',
     excerpt: 'Exploring the growing technology sector in Lebanon and its potential for innovation.'
   },
   {
     id: 2,
     title: 'Beyond the Books',
-    image: '/assets/blog/beyond-books.jpg',
+    image: '/assets/ProfilePic.jpeg',
     date: 'July 5, 2024 - 3:48 p.m. (GMT+3)',
     excerpt: 'How practical experience complements academic learning in engineering.'
   },
   {
     id: 3,
     title: 'LinkedIn Networking',
-    image: '/assets/blog/linkedin-networking.jpg',
+    image: '/assets/MEE.png',
     date: 'June 15, 2024 - 2:15 p.m. (GMT+3)',
     excerpt: 'Effective strategies for building professional connections and advancing your career.'
   },
