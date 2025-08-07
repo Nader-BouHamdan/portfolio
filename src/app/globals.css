@@ -40,6 +40,12 @@
   body {
     @apply bg-[var(--background)] text-[var(--text)];
   }
+  
+  /* Ensure Next.js images don't exceed their containers */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 @layer components {

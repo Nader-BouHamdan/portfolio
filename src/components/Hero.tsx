@@ -50,13 +50,14 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative h-[400px] md:h-[500px] hover-lift"
+            className="relative h-[400px] md:h-[500px] w-full max-w-md mx-auto hover-lift"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary-light)]/10 to-[var(--primary)]/10 rounded-2xl transform rotate-3" />
             <Image
               src="/assets/ProfilePic.jpeg"
               alt="Nader Bou Hamdan"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-contain rounded-2xl shadow-lg"
               priority
             />
