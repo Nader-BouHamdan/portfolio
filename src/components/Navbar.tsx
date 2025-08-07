@@ -8,6 +8,10 @@ import { useTheme } from '@/context/ThemeContext';
 
 const navItems = [
   { name: 'Home', href: '/' },
+  { name: 'About', href: '#about' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Contact', href: '#contact' },
   { name: 'Blog', href: '/blog' },
 ];
 
@@ -27,66 +31,110 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
+      className={`fixed w-full z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-[var(--card-bg)]/90 backdrop-blur-md shadow-sm border-b border-[var(--card-border)]' 
+          ? 'bg-[var(--card-bg)]/90 backdrop-blur-xl shadow-lg border-b border-[var(--card-border)]/50' 
           : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold">
-            <span className="text-gradient">Nader</span>
-          </Link>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link href="/" className="text-2xl font-bold group">
+              <span className="gradient-text-animate group-hover:scale-105 transition-transform duration-300">
+                Nader
+              </span>
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
+          <div className="hidden lg:flex items-center space-x-8">
+            {navItems.map((item, index) => (
+              <motion.div
                 key={item.name}
-                href={item.href}
-                className="text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-200 font-medium"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                {item.name}
-              </Link>
+                <Link
+                  href={item.href}
+                  className="relative text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-300 font-medium group"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              </motion.div>
             ))}
-            <button
-              onClick={toggleTheme}
-              className="theme-switch"
-              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
             >
-              {theme === 'light' ? (
-                <MoonIcon className="h-5 w-5 text-[var(--text-light)]" />
-              ) : (
-                <SunIcon className="h-5 w-5 text-[var(--text-light)]" />
-              )}
-            </button>
+              <button
+                onClick={toggleTheme}
+                className="theme-switch group"
+                aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+              >
+                <motion.div
+                  animate={{ rotate: theme === 'light' ? 0 : 180 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {theme === 'light' ? (
+                    <MoonIcon className="h-5 w-5 text-[var(--text-light)] group-hover:text-[var(--primary)] transition-colors duration-300" />
+                  ) : (
+                    <SunIcon className="h-5 w-5 text-[var(--text-light)] group-hover:text-[var(--primary)] transition-colors duration-300" />
+                  )}
+                </motion.div>
+              </button>
+            </motion.div>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center space-x-4 md:hidden">
-            <button
+          <div className="flex items-center space-x-4 lg:hidden">
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
               onClick={toggleTheme}
-              className="theme-switch"
+              className="theme-switch group"
               aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
-              {theme === 'light' ? (
-                <MoonIcon className="h-5 w-5 text-[var(--text-light)]" />
-              ) : (
-                <SunIcon className="h-5 w-5 text-[var(--text-light)]" />
-              )}
-            </button>
-            <button
-              className="p-2 text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-200"
+              <motion.div
+                animate={{ rotate: theme === 'light' ? 0 : 180 }}
+                transition={{ duration: 0.3 }}
+              >
+                {theme === 'light' ? (
+                  <MoonIcon className="h-5 w-5 text-[var(--text-light)] group-hover:text-[var(--primary)] transition-colors duration-300" />
+                ) : (
+                  <SunIcon className="h-5 w-5 text-[var(--text-light)] group-hover:text-[var(--primary)] transition-colors duration-300" />
+                )}
+              </motion.div>
+            </motion.button>
+            
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              className="p-2 text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-300 rounded-lg hover:bg-[var(--hover-bg)]"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? (
-                <XMarkIcon className="h-6 w-6" />
-              ) : (
-                <Bars3Icon className="h-6 w-6" />
-              )}
-            </button>
+              <motion.div
+                animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {isMobileMenuOpen ? (
+                  <XMarkIcon className="h-6 w-6" />
+                ) : (
+                  <Bars3Icon className="h-6 w-6" />
+                )}
+              </motion.div>
+            </motion.button>
           </div>
         </div>
       </div>
@@ -98,20 +146,32 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[var(--card-bg)] border-b border-[var(--card-border)]"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="lg:hidden bg-[var(--card-bg)]/95 backdrop-blur-xl border-b border-[var(--card-border)]/50"
           >
-            <div className="container mx-auto px-4 py-4 space-y-4">
-              {navItems.map((item) => (
-                <Link
+            <motion.div 
+              className="container mx-auto px-4 py-6 space-y-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+            >
+              {navItems.map((item, index) => (
+                <motion.div
                   key={item.name}
-                  href={item.href}
-                  className="block text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-200 font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
                 >
-                  {item.name}
-                </Link>
+                  <Link
+                    href={item.href}
+                    className="block text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-300 font-medium py-2 border-b border-[var(--card-border)]/30 last:border-b-0"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
