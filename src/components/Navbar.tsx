@@ -92,7 +92,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      <AnimatePresence mode="sync">
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
