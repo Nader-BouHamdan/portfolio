@@ -10,12 +10,8 @@ import {
 
 const footerLinks = {
   navigation: [
-    { name: 'Home', href: '#' },
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Blog', href: '/blog' },
   ],
   resources: [
     { name: 'Resume', href: '/assets/Nader Hamdan.pdf' },
