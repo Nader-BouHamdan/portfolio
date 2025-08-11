@@ -8,7 +8,7 @@ export default function Hero() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
-          <div className="text-center lg:text-left">
+          <div className="text-left">
             <div className="mb-6">
               <span className="inline-block px-4 py-2 bg-gradient-to-r from-[var(--primary)]/10 to-[var(--secondary)]/10  text-[var(--primary)] rounded-full text-sm font-medium border border-[var(--primary)]/20">
                 Mechatronics Engineer
@@ -21,7 +21,7 @@ export default function Hero() {
               <span className="text-[var(--text)]">Bou Hamdan</span>
             </h1>
 
-            <p className="text-lg text-[var(--text-light)] mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-lg text-[var(--text-light)] mb-8 max-w-lg leading-relaxed">
               A passionate Mechatronics Engineer building intelligent systems and cutting-edge technologies. 
               Specializing in robotics, automation, and software development.
             </p>
@@ -70,32 +70,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Stats section */}
-        <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
-          role="region"
-          aria-label="Professional statistics"
-        >
-          {[
-            { number: '10+', label: 'Projects Completed', icon: '🚀' },
-            { number: '40+', label: 'Students Taught', icon: '👨‍🏫' },
-            { number: '5+', label: 'Years Experience', icon: '⚡' },
-            { number: '100%', label: 'Client Satisfaction', icon: '⭐' },
-          ].map((stat, index) => (
-            <div 
-              key={index}
-              className="glass-card p-6 text-center"
-            >
-              <div className="text-2xl mb-2" aria-hidden="true">
-                {stat.icon}
-              </div>
-              <div className="text-2xl font-bold text-gradient-primary mb-2">
-                {stat.number}
-              </div>
-              <div className="text-[var(--text-light)] text-sm font-medium">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+        
       </div>
       
     </section>

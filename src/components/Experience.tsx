@@ -58,7 +58,7 @@ export default function Experience() {
   return (
     <section id="experience" className="section-padding">
       <div className="container mx-auto px-4">
-        <div ref={ref} className="text-center max-w-4xl mx-auto mb-12">
+        <div ref={ref} className="max-w-4xl mx-auto mb-12 text-left">
           <h2 className="heading-lg mb-4 text-gradient">Experience</h2>
           <p className="text-lg text-[var(--text-light)]">
             My professional journey and roles in various organizations

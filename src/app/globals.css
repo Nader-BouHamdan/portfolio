@@ -4,13 +4,13 @@
 
 /* Single professional palette (no dark mode) */
 :root {
-  --primary: #2563eb; /* blue-600 */
-  --primary-light: #3b82f6; /* blue-500 */
-  --primary-dark: #1d4ed8; /* blue-700 */
-  --secondary: #0ea5e9; /* sky-500 */
-  --accent: #f59e0b; /* amber-500 */
+  --primary: #1f2937; /* gray-800 */
+  --primary-light: #374151; /* gray-700 */
+  --primary-dark: #111827; /* gray-900 */
+  --secondary: #6b7280; /* gray-500 */
+  --accent: #9ca3af; /* gray-400 */
   --background: #ffffff; /* white */
-  --background-alt: #f8fafc; /* slate-50 */
+  --background-alt: #f3f4f6; /* gray-100 */
   --text: #0f172a; /* slate-900 */
   --text-light: #475569; /* slate-600 */
   --text-muted: #64748b; /* slate-500 */
@@ -124,9 +124,9 @@ img[fill] {
   aspect-ratio: 1;
   border-radius: 0.5rem; /* less curvy */
   overflow: hidden;
-  box-shadow: var(--shadow-xl);
-  border: 1px solid var(--card-border);
-  background-color: var(--background-alt);
+  box-shadow: none;
+  border: none;
+  background-color: var(--background);
 }
 
 .hero-image img {
@@ -320,24 +320,24 @@ img[fill] {
 
 /* Card Components */
 .card {
-  background-color: var(--card-bg);
-  border-radius: 0.5rem; /* less curvy */
-  box-shadow: var(--shadow-md);
-  transition: all 0.2s ease;
-  border: 1px solid var(--card-border);
-  overflow: hidden;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  box-shadow: none;
+  transition: none;
+  border: none;
+  overflow: visible;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  box-shadow: none;
+  transform: none;
 }
 
 .glass-card {
-  background-color: var(--card-bg);
-  border-radius: 0.5rem;
-  border: 1px solid var(--card-border);
-  box-shadow: var(--shadow-md);
+  background-color: transparent;
+  border-radius: 0.25rem;
+  border: none;
+  box-shadow: none;
 }
 
 /* Text Effects */
@@ -452,28 +452,28 @@ img[fill] {
 /* Project card hover effects */
 .project-card {
   position: relative;
-  overflow: hidden;
-  border-radius: 0.5rem;
-  background-color: var(--card-bg);
-  box-shadow: var(--shadow-md);
-  transition: all 0.2s ease;
+  overflow: visible;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  box-shadow: none;
+  transition: none;
 }
 
 .project-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  box-shadow: none;
+  transform: none;
 }
 
 .project-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgb(var(--primary) / 0), rgb(var(--secondary) / 0), rgb(var(--accent) / 0));
-  transition: all 0.3s ease;
+  background: transparent;
+  transition: none;
 }
 
 .project-card:hover::before {
-  background: linear-gradient(135deg, rgb(var(--primary) / 0.1), rgb(var(--secondary) / 0.1), rgb(var(--accent) / 0.1));
+  background: transparent;
 }
 
 /* Animation Keyframes */
