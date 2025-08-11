@@ -23,13 +23,13 @@ export default function About() {
             </p>
             <div className="pt-4">
               <a
-                href="/assets/Nader Hamdan.pdf"
+                href="/assets/Nader Bou Hamdan Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary"
                 aria-label="Download Nader's CV (opens in new tab)"
               >
-                Download CV
+                Download Resume
               </a>
             </div>
           </div>
