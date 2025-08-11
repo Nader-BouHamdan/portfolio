@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 export default function About() {
@@ -12,27 +11,16 @@ export default function About() {
   return (
     <section id="about" className="section-padding section-alt" aria-labelledby="about-heading">
       <div className="container mx-auto px-4">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-4xl mx-auto mb-12"
-        >
+        <div ref={ref} className="text-center max-w-4xl mx-auto mb-12">
           <h2 id="about-heading" className="heading-lg mb-4 text-gradient">About Me</h2>
           <p className="text-lg text-[var(--text-light)]">
             Get to know more about my background and what drives me
           </p>
-        </motion.div>
+        </div>
 
         <div className="max-w-4xl mx-auto">
           {/* About Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="space-y-8"
-          >
+          <div className="space-y-8">
             <article className="card p-8">
               <h3 className="heading-sm mb-4 text-[var(--text)]">I&apos;m Nader Bou Hamdan</h3>
               <p className="text-lg text-[var(--text-light)] leading-relaxed">
@@ -65,7 +53,7 @@ export default function About() {
                 </svg>
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

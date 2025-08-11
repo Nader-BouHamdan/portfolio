@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const skills = [
@@ -33,27 +32,16 @@ export default function Skills() {
   return (
     <section id="skills" className="section-padding section-alt">
       <div className="container mx-auto px-4">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-4xl mx-auto mb-12"
-        >
+        <div ref={ref} className="text-center max-w-4xl mx-auto mb-12">
           <h2 className="heading-lg mb-4 text-gradient">Skills & Projects</h2>
           <p className="text-lg text-[var(--text-light)]">
             My technical expertise and notable projects
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
           {/* Technical Skills */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <div className="card p-8">
               <h3 className="heading-sm mb-6 text-[var(--text)]">Technical Skills</h3>
               <div className="space-y-6">
@@ -69,10 +57,8 @@ export default function Skills() {
                       </span>
                     </div>
                     <div className="h-3 bg-[var(--card-border)] rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={inView ? { width: `${skill.level}%` } : {}}
-                        transition={{ duration: 1, delay: index * 0.1 }}
+                      <div
+                        style={{ width: `${skill.level}%` }}
                         className="h-full bg-gradient-to-r from-[var(--primary)] to-[var(--primary-light)] rounded-full"
                       />
                     </div>
@@ -88,35 +74,27 @@ export default function Skills() {
                 My expertise spans from mechanical design and robotics to software development and system integration.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Projects */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <div className="card p-8">
               <h3 className="heading-sm mb-6 text-[var(--text)]">Notable Projects</h3>
               <ul className="space-y-4">
                 {projects.map((project, index) => (
-                  <motion.li
+                  <li
                     key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={inView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                    className="flex items-start gap-3 p-3 rounded-lg hover:bg-[var(--hover-bg)] transition-colors duration-200"
+                    className="flex items-start gap-3 p-3 rounded-lg"
                   >
                     <span className="text-[var(--primary)] font-bold text-lg">•</span>
                     <span className="text-[var(--text-light)] leading-relaxed">
                       {project}
                     </span>
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

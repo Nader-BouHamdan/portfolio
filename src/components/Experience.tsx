@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
   BriefcaseIcon,
@@ -59,27 +58,18 @@ export default function Experience() {
   return (
     <section id="experience" className="section-padding">
       <div className="container mx-auto px-4">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-4xl mx-auto mb-12"
-        >
+        <div ref={ref} className="text-center max-w-4xl mx-auto mb-12">
           <h2 className="heading-lg mb-4 text-gradient">Experience</h2>
           <p className="text-lg text-[var(--text-light)]">
             My professional journey and roles in various organizations
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {experiences.map((experience, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card p-6 h-full flex flex-col hover-lift"
+              className="card p-6 h-full flex flex-col"
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-3 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20">
@@ -93,7 +83,7 @@ export default function Experience() {
               <p className="text-[var(--text-light)] leading-relaxed flex-1">
                 {experience.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

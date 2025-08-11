@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
@@ -68,7 +67,7 @@ const projects: Project[] = [
   {
     title: 'HR Management',
     description: 'Created a full-stack application using Java for backend and JavaFX frontend development, along with SQL for the database, streamlining HR processes and data management.',
-    image: '/assets/1._HR_process_automation.png',
+    image: '/assets/logic.jpg',
     tags: ['Java', 'JavaFX', 'SQL', 'Full Stack'],
     github: '#',
     demo: '#',
@@ -105,39 +104,24 @@ export default function Projects() {
     (currentPage + 1) * projectsPerPage
   );
 
-  const nextPage = () => {
-    setCurrentPage((prev) => (prev + 1) % totalPages);
-  };
-
-  const prevPage = () => {
-    setCurrentPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
-  };
+  const nextPage = () => setCurrentPage((prev) => (prev + 1) % totalPages);
+  const prevPage = () => setCurrentPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
 
   return (
     <section id="projects" className="section-padding">
       <div className="container mx-auto px-4">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-12"
-        >
+        <div ref={ref} className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="heading-lg mb-4 text-gradient">My Projects</h2>
           <p className="text-[var(--text-light)] text-lg">
             A selection of my recent work and personal projects
           </p>
-        </motion.div>
+        </div>
 
         <div className="relative max-w-6xl mx-auto">
           {/* Navigation Buttons */}
           <button
             onClick={prevPage}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 p-3 rounded-full 
-                     bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-light)]
-                     hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors duration-200
-                     focus:outline-none focus:ring-2 focus:ring-[var(--primary)] shadow-lg
-                     hidden lg:flex items-center justify-center"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 p-3 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-light)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] shadow-lg hidden lg:flex items-center justify-center"
             aria-label="Previous projects"
           >
             <ChevronLeftIcon className="h-5 w-5" />
@@ -145,27 +129,17 @@ export default function Projects() {
 
           <button
             onClick={nextPage}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 p-3 rounded-full 
-                     bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-light)]
-                     hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors duration-200
-                     focus:outline-none focus:ring-2 focus:ring-[var(--primary)] shadow-lg
-                     hidden lg:flex items-center justify-center"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 p-3 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-light)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] shadow-lg hidden lg:flex items-center justify-center"
             aria-label="Next projects"
           >
             <ChevronRightIcon className="h-5 w-5" />
           </button>
-
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence mode="sync">
               {currentProjects.map((project, index) => (
-                <motion.div
-                  key={`${currentPage}-${index}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="card group hover-lift h-full flex flex-col"
+                <div
+                  key={index}
+                  className="card h-full flex flex-col"
                 >
                   {/* Project Image Container */}
                   <div className="project-image">
@@ -174,7 +148,7 @@ export default function Projects() {
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover"
                       onError={(e) => {
                         // Fallback to a placeholder if image fails to load
                         const target = e.target as HTMLImageElement;
@@ -184,7 +158,39 @@ export default function Projects() {
                     {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[var(--background-alt)]/60 to-transparent" />
                   </div>
+          {/* Mobile Navigation */}
+          <div className="flex justify-center gap-4 mt-8 lg:hidden">
+            <button
+              onClick={prevPage}
+              className="p-2 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-light)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors duration-200"
+              aria-label="Previous projects"
+            >
+              <ChevronLeftIcon className="h-5 w-5" />
+            </button>
+            <button
+              onClick={nextPage}
+              className="p-2 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-light)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors duration-200"
+              aria-label="Next projects"
+            >
+              <ChevronRightIcon className="h-5 w-5" />
+            </button>
+          </div>
 
+          {/* Page Indicators */}
+          <div className="flex justify-center gap-2 mt-6">
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentPage(index)}
+                className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                  index === currentPage
+                    ? 'bg-[var(--primary)]'
+                    : 'bg-[var(--card-border)] hover:bg-[var(--primary)]/50'
+                }`}
+                aria-label={`Go to page ${index + 1}`}
+              />
+            ))}
+          </div>
                   {/* Project Content */}
                   <div className="p-6 flex-1 flex flex-col">
                     <h3 className="text-xl font-semibold mb-3 text-[var(--text)]">
@@ -228,46 +234,11 @@ export default function Projects() {
                       </a>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </AnimatePresence>
+
           </div>
 
-          {/* Mobile Navigation */}
-          <div className="flex justify-center gap-4 mt-8 lg:hidden">
-            <button
-              onClick={prevPage}
-              className="p-2 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-light)]
-                       hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors duration-200"
-              aria-label="Previous projects"
-            >
-              <ChevronLeftIcon className="h-5 w-5" />
-            </button>
-            <button
-              onClick={nextPage}
-              className="p-2 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-light)]
-                       hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors duration-200"
-              aria-label="Next projects"
-            >
-              <ChevronRightIcon className="h-5 w-5" />
-            </button>
-          </div>
-
-          {/* Page Indicators */}
-          <div className="flex justify-center gap-2 mt-6">
-            {Array.from({ length: totalPages }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentPage(index)}
-                className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                  index === currentPage
-                    ? 'bg-[var(--primary)]'
-                    : 'bg-[var(--card-border)] hover:bg-[var(--primary)]/50'
-                }`}
-                aria-label={`Go to page ${index + 1}`}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>

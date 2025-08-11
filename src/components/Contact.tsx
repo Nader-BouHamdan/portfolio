@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
   EnvelopeIcon,
@@ -58,27 +57,16 @@ export default function Contact() {
   return (
     <section id="contact" className="section-padding section-alt" aria-labelledby="contact-heading">
       <div className="container mx-auto px-4">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-4xl mx-auto mb-12"
-        >
+        <div ref={ref} className="text-center max-w-4xl mx-auto mb-12">
           <h2 id="contact-heading" className="heading-lg mb-4 text-gradient">Get in Touch</h2>
           <p className="text-lg text-[var(--text-light)]">
             I&apos;m always open to discussing new projects, creative ideas or opportunities to be part of your visions.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
           {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <div className="card p-6">
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-3 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20" aria-hidden="true">
@@ -178,15 +166,10 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="card p-8"
-          >
+          <div className="card p-8">
             <h3 className="heading-sm mb-6 text-[var(--text)]">Send me a message</h3>
             
             {/* Form Status Messages */}
@@ -281,7 +264,7 @@ export default function Contact() {
                 )}
               </button>
             </form>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

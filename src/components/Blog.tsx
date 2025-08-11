@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 const blogPosts = [
@@ -57,33 +56,24 @@ export default function Blog() {
       {/* Blog Banner */}
       <section className="section-alt py-20" aria-labelledby="blog-heading">
         <div className="container mx-auto px-4 text-center">
-          <motion.h1 
+          <h1 
             id="blog-heading"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
             className="heading-xl mb-4"
           >
-            <span className="text-gradient">Blog</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            <span className="text-[var(--text)]">Blog</span>
+          </h1>
+          <p 
             className="text-lg text-[var(--text)]"
           >
             364 Subscribers
-          </motion.p>
+          </p>
         </div>
       </section>
 
       {/* Newsletter Subscription */}
       <section className="section-padding bg-[var(--card-bg)]" aria-labelledby="newsletter-heading">
         <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+          <div 
             className="max-w-md mx-auto card p-8"
           >
             <h2 id="newsletter-heading" className="heading-lg mb-6 text-center text-gradient">
@@ -134,27 +124,21 @@ export default function Blog() {
                 )}
               </button>
             </form>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Blog Posts Grid */}
       <section className="section-padding" aria-labelledby="blog-posts-heading">
         <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+          <div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <h2 id="blog-posts-heading" className="sr-only">Blog Posts</h2>
-            {blogPosts.map((post, index) => (
-              <motion.article
+            {blogPosts.map((post) => (
+              <article
                 key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                className="card overflow-hidden hover-lift"
+                className="card overflow-hidden"
               >
                 <div className="h-48 bg-gradient-to-br from-[var(--primary-light)] to-[var(--primary)] flex items-center justify-center" aria-hidden="true">
                   <div className="text-white text-center p-4">
@@ -173,9 +157,9 @@ export default function Blog() {
                 <div className="bg-[var(--primary)] text-white px-6 py-3 text-sm">
                   <time dateTime="2024-08-30T20:27:00+03:00">{post.date}</time>
                 </div>
-              </motion.article>
+              </article>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

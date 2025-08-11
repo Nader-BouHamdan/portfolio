@@ -2,52 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Single professional palette (no dark mode) */
 :root {
-  /* Modern Light theme variables */
-  --primary: #0ea5e9;
-  --primary-light: #38bdf8;
-  --primary-dark: #0284c7;
-  --secondary: #8b5cf6;
-  --secondary-light: #a78bfa;
-  --accent: #f59e0b;
-  --accent-light: #fbbf24;
-  --background: #ffffff;
-  --background-alt: #f8fafc;
-  --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --text: #0f172a;
-  --text-light: #475569;
-  --text-muted: #64748b;
+  --primary: #2563eb; /* blue-600 */
+  --primary-light: #3b82f6; /* blue-500 */
+  --primary-dark: #1d4ed8; /* blue-700 */
+  --secondary: #0ea5e9; /* sky-500 */
+  --accent: #f59e0b; /* amber-500 */
+  --background: #ffffff; /* white */
+  --background-alt: #f8fafc; /* slate-50 */
+  --text: #0f172a; /* slate-900 */
+  --text-light: #475569; /* slate-600 */
+  --text-muted: #64748b; /* slate-500 */
   --card-bg: #ffffff;
-  --card-border: #e2e8f0;
-  --hover-bg: #f1f5f9;
+  --card-border: #e2e8f0; /* slate-200 */
+  --hover-bg: #f1f5f9; /* slate-100 */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-}
-
-.dark {
-  /* Modern Dark theme variables */
-  --primary: #38bdf8;
-  --primary-light: #7dd3fc;
-  --primary-dark: #0ea5e9;
-  --secondary: #a78bfa;
-  --secondary-light: #c4b5fd;
-  --accent: #fbbf24;
-  --accent-light: #fcd34d;
-  --background: #0f172a;
-  --background-alt: #1e293b;
-  --background-gradient: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-  --text: #f8fafc;
-  --text-light: #cbd5e1;
-  --text-muted: #94a3b8;
-  --card-bg: #1e293b;
-  --card-border: #334155;
-  --hover-bg: #334155;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
 }
 
 /* Base styles */
@@ -149,7 +122,7 @@ img[fill] {
   width: 100%;
   max-width: 400px;
   aspect-ratio: 1;
-  border-radius: 1.5rem;
+  border-radius: 0.5rem; /* less curvy */
   overflow: hidden;
   box-shadow: var(--shadow-xl);
   border: 1px solid var(--card-border);
@@ -206,7 +179,7 @@ img[fill] {
   color: white;
   font-weight: 600;
   font-size: 0.875rem;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem; /* less curvy */
   transition: all 0.3s ease;
   box-shadow: var(--shadow-md);
   border: none;
@@ -236,7 +209,7 @@ img[fill] {
   color: var(--primary);
   font-weight: 600;
   font-size: 0.875rem;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem; /* less curvy */
   transition: all 0.3s ease;
   box-shadow: var(--shadow-sm);
   cursor: pointer;
@@ -282,6 +255,9 @@ img[fill] {
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.1;
+  color: var(--text);
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 0.5rem;
 }
 
 @media (min-width: 768px) {
@@ -301,6 +277,9 @@ img[fill] {
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.2;
+  color: var(--text);
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 0.5rem;
 }
 
 @media (min-width: 768px) {
@@ -342,9 +321,9 @@ img[fill] {
 /* Card Components */
 .card {
   background-color: var(--card-bg);
-  border-radius: 1rem;
+  border-radius: 0.5rem; /* less curvy */
   box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   border: 1px solid var(--card-border);
   overflow: hidden;
 }
@@ -355,31 +334,28 @@ img[fill] {
 }
 
 .glass-card {
-  background-color: rgb(var(--card-bg) / 0.8);
-  backdrop-filter: blur(12px);
-  border-radius: 1rem;
-  border: 1px solid rgb(var(--card-border) / 0.5);
-  box-shadow: var(--shadow-lg);
+  background-color: var(--card-bg);
+  border-radius: 0.5rem;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-md);
 }
 
 /* Text Effects */
 .text-gradient {
-  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+      background: none;
+      color: var(--text);
 }
 
 .text-gradient-primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  background: none;
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
+  color: var(--primary);
 }
 
 /* Section Backgrounds */
 .section-alt {
-  background: linear-gradient(135deg, var(--background-alt), var(--background), var(--background-alt));
+  background: var(--background);
 }
 
 .section-gradient {
@@ -477,10 +453,10 @@ img[fill] {
 .project-card {
   position: relative;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   background-color: var(--card-bg);
   box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .project-card:hover {
