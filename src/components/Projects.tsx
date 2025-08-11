@@ -121,77 +121,85 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-12"
         >
-          <h2 className="heading-lg mb-4 text-gradient">My Scrappy Projects</h2>
-          <p className="text-[var(--text-light)]">
+          <h2 className="heading-lg mb-4 text-gradient">My Projects</h2>
+          <p className="text-[var(--text-light)] text-lg">
             A selection of my recent work and personal projects
           </p>
         </motion.div>
 
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative max-w-6xl mx-auto">
           {/* Navigation Buttons */}
           <button
             onClick={prevPage}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 p-2 rounded-full 
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 z-10 p-3 rounded-full 
                      bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-light)]
                      hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors duration-200
-                     focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                     focus:outline-none focus:ring-2 focus:ring-[var(--primary)] shadow-lg
+                     hidden lg:flex items-center justify-center"
             aria-label="Previous projects"
           >
-            <ChevronLeftIcon className="h-6 w-6" />
+            <ChevronLeftIcon className="h-5 w-5" />
           </button>
 
           <button
             onClick={nextPage}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 p-2 rounded-full 
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 z-10 p-3 rounded-full 
                      bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-light)]
                      hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors duration-200
-                     focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                     focus:outline-none focus:ring-2 focus:ring-[var(--primary)] shadow-lg
+                     hidden lg:flex items-center justify-center"
             aria-label="Next projects"
           >
-            <ChevronRightIcon className="h-6 w-6" />
+            <ChevronRightIcon className="h-5 w-5" />
           </button>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
-            <AnimatePresence mode="wait">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <AnimatePresence mode="sync">
               {currentProjects.map((project, index) => (
                 <motion.div
                   key={`${currentPage}-${index}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="card group hover-lift"
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="card group hover-lift h-full flex flex-col"
                 >
-                  {/* Project Image */}
-                  <div className="relative h-48 mb-4 overflow-hidden rounded-t-lg">
+                  {/* Project Image Container */}
+                  <div className="project-image">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      onError={(e) => {
+                        // Fallback to a placeholder if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.src = '/assets/placeholder.svg';
+                      }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--background-alt)]/80 to-transparent" />
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--background-alt)]/60 to-transparent" />
                   </div>
 
                   {/* Project Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-[var(--text)]">
+                  <div className="p-6 flex-1 flex flex-col">
+                    <h3 className="text-xl font-semibold mb-3 text-[var(--text)]">
                       {project.title}
                     </h3>
-                    <p className="text-[var(--text-light)] mb-4">
+                    <p className="text-[var(--text-light)] mb-4 flex-1 leading-relaxed">
                       {project.description}
                     </p>
 
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="px-3 py-1 text-sm rounded-full bg-[var(--primary)]/10 text-[var(--primary)]"
+                          className="px-3 py-1 text-xs rounded-full bg-[var(--primary)]/10 text-[var(--primary)] font-medium"
                         >
                           {tag}
                         </span>
@@ -199,22 +207,24 @@ export default function Projects() {
                     </div>
 
                     {/* Links */}
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 mt-auto">
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-200"
+                        className="text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-200 p-2 rounded-lg hover:bg-[var(--hover-bg)]"
+                        aria-label={`View ${project.title} on GitHub`}
                       >
-                        <FaGithub className="h-6 w-6" />
+                        <FaGithub className="h-5 w-5" />
                       </a>
                       <a
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-200"
+                        className="text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-200 p-2 rounded-lg hover:bg-[var(--hover-bg)]"
+                        aria-label={`View ${project.title} demo`}
                       >
-                        <FaExternalLinkAlt className="h-6 w-6" />
+                        <FaExternalLinkAlt className="h-5 w-5" />
                       </a>
                     </div>
                   </div>
@@ -223,8 +233,28 @@ export default function Projects() {
             </AnimatePresence>
           </div>
 
+          {/* Mobile Navigation */}
+          <div className="flex justify-center gap-4 mt-8 lg:hidden">
+            <button
+              onClick={prevPage}
+              className="p-2 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-light)]
+                       hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors duration-200"
+              aria-label="Previous projects"
+            >
+              <ChevronLeftIcon className="h-5 w-5" />
+            </button>
+            <button
+              onClick={nextPage}
+              className="p-2 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--text-light)]
+                       hover:text-[var(--primary)] hover:border-[var(--primary)] transition-colors duration-200"
+              aria-label="Next projects"
+            >
+              <ChevronRightIcon className="h-5 w-5" />
+            </button>
+          </div>
+
           {/* Page Indicators */}
-          <div className="flex justify-center gap-2 mt-8">
+          <div className="flex justify-center gap-2 mt-6">
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}

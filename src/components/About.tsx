@@ -10,55 +10,59 @@ export default function About() {
   });
 
   return (
-    <section id="about" className="section-padding section-alt">
+    <section id="about" className="section-padding section-alt" aria-labelledby="about-heading">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-4xl mx-auto mb-12"
         >
-          <h2 className="heading-lg mb-4 text-gradient">About Me</h2>
-          <p className="text-[var(--text-light)]">
+          <h2 id="about-heading" className="heading-lg mb-4 text-gradient">About Me</h2>
+          <p className="text-lg text-[var(--text-light)]">
             Get to know more about my background and what drives me
           </p>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* About Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="space-y-6 text-center"
+            className="space-y-8"
           >
-            <div>
-              <h3 className="text-2xl font-semibold mb-4 text-[var(--text)]">I&apos;m Nader Bou Hamdan</h3>
-              <p className="text-[var(--text-light)] mb-6">
+            <article className="card p-8">
+              <h3 className="heading-sm mb-4 text-[var(--text)]">I&apos;m Nader Bou Hamdan</h3>
+              <p className="text-lg text-[var(--text-light)] leading-relaxed">
                 I have graduated with a Bachelor&apos;s Degree in Mechatronics Engineering, and I am seeking an entry-level opportunity 
                 with an esteemed organization where I can utilize my skills & enhance learning in the field of work for Intelligent 
                 Systems and Technologies.
               </p>
-            </div>
+            </article>
 
-            <div>
-              <h3 className="text-xl font-semibold mb-4 text-[var(--text)]">Why Work With Me</h3>
-              <p className="text-[var(--text-light)]">
+            <article className="card p-8">
+              <h3 className="heading-sm mb-4 text-[var(--text)]">Why Work With Me</h3>
+              <p className="text-lg text-[var(--text-light)] leading-relaxed">
                 I&apos;m a driven Mechatronics Engineer looking to leverage my technical skills and cooperative spirit to successfully 
                 complete innovating projects. With expertise in robotics, automation, and software development, I bring a unique 
                 perspective to every challenge.
               </p>
-            </div>
+            </article>
 
-            <div className="pt-4">
+            <div className="text-center pt-4">
               <a
                 href="/assets/Nader Hamdan.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary hover-lift inline-block"
+                className="btn-primary"
+                aria-label="Download Nader's CV (opens in new tab)"
               >
-                Download CV
+                <span>Download CV</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
               </a>
             </div>
           </motion.div>

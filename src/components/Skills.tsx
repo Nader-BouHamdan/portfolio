@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const skills = [
-  { name: 'Python', level: 90 },
-  { name: 'C++', level: 60 },
-  { name: 'Solidworks', level: 80 },
-  { name: 'MATLAB', level: 80 },
-  { name: 'Linux', level: 60 },
-  { name: 'Angular', level: 70 },
+  { name: 'Python', level: 90, icon: '🐍' },
+  { name: 'C++', level: 60, icon: '⚡' },
+  { name: 'Solidworks', level: 80, icon: '🔧' },
+  { name: 'MATLAB', level: 80, icon: '📊' },
+  { name: 'Linux', level: 60, icon: '🐧' },
+  { name: 'Angular', level: 70, icon: '🅰️' },
 ];
 
 const projects = [
@@ -38,39 +38,42 @@ export default function Skills() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-4xl mx-auto mb-12"
         >
           <h2 className="heading-lg mb-4 text-gradient">Skills & Projects</h2>
-          <p className="text-[var(--text-light)]">
+          <p className="text-lg text-[var(--text-light)]">
             My technical expertise and notable projects
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
           {/* Technical Skills */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-[var(--text)]">Technical Skills</h3>
+            <div className="card p-8">
+              <h3 className="heading-sm mb-6 text-[var(--text)]">Technical Skills</h3>
               <div className="space-y-6">
                 {skills.map((skill, index) => (
                   <div key={index}>
-                    <div className="flex justify-between mb-2">
-                      <span className="font-medium text-[var(--text)]">{skill.name}</span>
-                      <span className="text-[var(--text-light)]">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-3">
+                        <span className="text-lg">{skill.icon}</span>
+                        <span className="font-medium text-[var(--text)]">{skill.name}</span>
+                      </div>
+                      <span className="text-[var(--text-light)] font-medium">
                         {skill.level}%
                       </span>
                     </div>
-                    <div className="h-2 bg-[var(--card-border)] rounded-full">
+                    <div className="h-3 bg-[var(--card-border)] rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={inView ? { width: `${skill.level}%` } : {}}
                         transition={{ duration: 1, delay: index * 0.1 }}
-                        className="h-full bg-[var(--primary)] rounded-full"
+                        className="h-full bg-gradient-to-r from-[var(--primary)] to-[var(--primary-light)] rounded-full"
                       />
                     </div>
                   </div>
@@ -78,10 +81,11 @@ export default function Skills() {
               </div>
             </div>
 
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-[var(--text)]">Development Skills</h3>
-              <p className="text-[var(--text-light)]">
-                I&apos;ve worked on various projects that showcase my technical abilities and problem-solving skills.
+            <div className="card p-8">
+              <h3 className="heading-sm mb-4 text-[var(--text)]">Development Skills</h3>
+              <p className="text-[var(--text-light)] leading-relaxed">
+                I&apos;ve worked on various projects that showcase my technical abilities and problem-solving skills. 
+                My expertise spans from mechanical design and robotics to software development and system integration.
               </p>
             </div>
           </motion.div>
@@ -91,25 +95,27 @@ export default function Skills() {
             initial={{ opacity: 0, x: 20 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="space-y-8"
+            className="space-y-6"
           >
-            <h3 className="text-2xl font-semibold mb-6 text-[var(--text)]">Notable Projects</h3>
-            <ul className="space-y-4">
-              {projects.map((project, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  className="flex items-start"
-                >
-                  <span className="text-[var(--primary)] mr-2">•</span>
-                  <span className="text-[var(--text-light)]">
-                    {project}
-                  </span>
-                </motion.li>
-              ))}
-            </ul>
+            <div className="card p-8">
+              <h3 className="heading-sm mb-6 text-[var(--text)]">Notable Projects</h3>
+              <ul className="space-y-4">
+                {projects.map((project, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                    className="flex items-start gap-3 p-3 rounded-lg hover:bg-[var(--hover-bg)] transition-colors duration-200"
+                  >
+                    <span className="text-[var(--primary)] font-bold text-lg">•</span>
+                    <span className="text-[var(--text-light)] leading-relaxed">
+                      {project}
+                    </span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
           </motion.div>
         </div>
       </div>

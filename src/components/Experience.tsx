@@ -64,27 +64,33 @@ export default function Experience() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-4xl mx-auto mb-12"
         >
           <h2 className="heading-lg mb-4 text-gradient">Experience</h2>
-          <p className="text-[var(--text-light)]">
+          <p className="text-lg text-[var(--text-light)]">
             My professional journey and roles in various organizations
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {experiences.map((experience, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card p-6 hover-lift"
+              className="card p-6 h-full flex flex-col hover-lift"
             >
-              <experience.icon className="h-12 w-12 text-[var(--primary)] mb-4" />
-              <h3 className="text-xl font-semibold mb-2 text-[var(--text)]">{experience.title}</h3>
-              <h4 className="text-[var(--primary)] font-medium mb-4">{experience.role}</h4>
-              <p className="text-[var(--text-light)]">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 rounded-xl bg-[var(--primary)]/10 border border-[var(--primary)]/20">
+                  <experience.icon className="h-6 w-6 text-[var(--primary)]" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-[var(--text)]">{experience.title}</h3>
+                  <h4 className="text-sm text-[var(--primary)] font-medium">{experience.role}</h4>
+                </div>
+              </div>
+              <p className="text-[var(--text-light)] leading-relaxed flex-1">
                 {experience.description}
               </p>
             </motion.div>

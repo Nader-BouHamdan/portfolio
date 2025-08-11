@@ -29,20 +29,36 @@ const blogPosts = [
 
 export default function Blog() {
   const [email, setEmail] = useState('');
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle newsletter subscription
-    console.log('Subscribing email:', email);
-    setEmail('');
+    setIsSubscribing(true);
+    setSubscribeStatus('idle');
+
+    try {
+      // Simulate newsletter subscription - replace with actual API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      console.log('Subscribing email:', email);
+      setSubscribeStatus('success');
+      setEmail('');
+    } catch (error) {
+      console.error('Subscription error:', error);
+      setSubscribeStatus('error');
+    } finally {
+      setIsSubscribing(false);
+    }
   };
 
   return (
     <div className="pt-16">
       {/* Blog Banner */}
-      <section className="section-alt py-20">
+      <section className="section-alt py-20" aria-labelledby="blog-heading">
         <div className="container mx-auto px-4 text-center">
           <motion.h1 
+            id="blog-heading"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -62,7 +78,7 @@ export default function Blog() {
       </section>
 
       {/* Newsletter Subscription */}
-      <section className="section-padding bg-[var(--card-bg)]">
+      <section className="section-padding bg-[var(--card-bg)]" aria-labelledby="newsletter-heading">
         <div className="container mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -70,23 +86,52 @@ export default function Blog() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-md mx-auto card p-8"
           >
-            <h2 className="heading-lg mb-6 text-center text-gradient">
+            <h2 id="newsletter-heading" className="heading-lg mb-6 text-center text-gradient">
               Subscribe to Newsletter
             </h2>
-            <form onSubmit={handleSubscribe} className="flex gap-3">
+            
+            {/* Subscription Status Messages */}
+            {subscribeStatus === 'success' && (
+              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800" role="alert">
+                <p>Thank you for subscribing! You&apos;ll receive updates about new blog posts.</p>
+              </div>
+            )}
+            
+            {subscribeStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800" role="alert">
+                <p>Sorry, there was an error subscribing. Please try again.</p>
+              </div>
+            )}
+            
+            <form onSubmit={handleSubscribe} className="flex gap-3" noValidate>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 bg-[var(--background)] border border-[var(--card-border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent text-[var(--text)]"
+                className="flex-1 px-4 py-3 bg-[var(--background)] border border-[var(--card-border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent text-[var(--text)] disabled:opacity-50"
                 required
+                aria-required="true"
+                disabled={isSubscribing}
+                aria-label="Email address for newsletter subscription"
               />
               <button
                 type="submit"
-                className="btn-primary"
+                className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={isSubscribing}
+                aria-label={isSubscribing ? "Subscribing..." : "Subscribe to newsletter"}
               >
-                Subscribe
+                {isSubscribing ? (
+                  <>
+                    <span>Subscribing...</span>
+                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                  </>
+                ) : (
+                  "Subscribe"
+                )}
               </button>
             </form>
           </motion.div>
@@ -94,7 +139,7 @@ export default function Blog() {
       </section>
 
       {/* Blog Posts Grid */}
-      <section className="section-padding">
+      <section className="section-padding" aria-labelledby="blog-posts-heading">
         <div className="container mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -102,6 +147,7 @@ export default function Blog() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
+            <h2 id="blog-posts-heading" className="sr-only">Blog Posts</h2>
             {blogPosts.map((post, index) => (
               <motion.article
                 key={post.id}
@@ -110,7 +156,7 @@ export default function Blog() {
                 transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                 className="card overflow-hidden hover-lift"
               >
-                <div className="h-48 bg-gradient-to-br from-[var(--primary-light)] to-[var(--primary)] flex items-center justify-center">
+                <div className="h-48 bg-gradient-to-br from-[var(--primary-light)] to-[var(--primary)] flex items-center justify-center" aria-hidden="true">
                   <div className="text-white text-center p-4">
                     <div className="text-4xl mb-2">📊</div>
                     <div className="text-sm opacity-90">{post.title}</div>
@@ -125,7 +171,7 @@ export default function Blog() {
                   </p>
                 </div>
                 <div className="bg-[var(--primary)] text-white px-6 py-3 text-sm">
-                  {post.date}
+                  <time dateTime="2024-08-30T20:27:00+03:00">{post.date}</time>
                 </div>
               </motion.article>
             ))}

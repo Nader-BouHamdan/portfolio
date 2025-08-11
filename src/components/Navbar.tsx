@@ -31,21 +31,21 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-500 ${
+      className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[var(--card-bg)]/90 backdrop-blur-xl shadow-lg border-b border-[var(--card-border)]/50' 
+          ? 'bg-[var(--card-bg)]/95 backdrop-blur-xl shadow-lg border-b border-[var(--card-border)]/50' 
           : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/" className="text-2xl font-bold group">
+            <Link href="/" className="text-xl lg:text-2xl font-bold group">
               <span className="gradient-text-animate group-hover:scale-105 transition-transform duration-300">
                 Nader
               </span>
@@ -96,7 +96,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center space-x-4 lg:hidden">
+          <div className="flex items-center space-x-3 lg:hidden">
             <motion.button
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -123,6 +123,7 @@ export default function Navbar() {
               transition={{ duration: 0.5, delay: 0.7 }}
               className="p-2 text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-300 rounded-lg hover:bg-[var(--hover-bg)]"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle mobile menu"
             >
               <motion.div
                 animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
@@ -150,7 +151,7 @@ export default function Navbar() {
             className="lg:hidden bg-[var(--card-bg)]/95 backdrop-blur-xl border-b border-[var(--card-border)]/50"
           >
             <motion.div 
-              className="container mx-auto px-4 py-6 space-y-4"
+              className="container mx-auto px-4 py-4 space-y-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}
@@ -164,7 +165,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className="block text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-300 font-medium py-2 border-b border-[var(--card-border)]/30 last:border-b-0"
+                    className="block text-[var(--text-light)] hover:text-[var(--primary)] transition-colors duration-300 font-medium py-3 border-b border-[var(--card-border)]/30 last:border-b-0"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
